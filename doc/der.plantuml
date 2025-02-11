@@ -1,0 +1,54 @@
+@startuml
+entity "BankEntity" as BE {
+  *ID : int
+  --
+  Nombre : string
+  Codigo_SWIFT : string
+  Pais : string
+  Fecha_Creacion : date
+  Estado : string
+}
+
+entity "BankAccount" as BA {
+  *ID : int
+  --
+  Numero_Cuenta : string
+  Tipo_Cuenta : string
+  Saldo : decimal
+  Moneda : string
+  Estado : string
+}
+
+entity "Customer" as C {
+  *ID : int
+  --
+  Nombre_Completo : string
+  Identificacion : string
+  Direccion : string
+  Telefono : string
+  Correo : string
+}
+
+entity "Transaction" as T {
+  *ID : int
+  --
+  Monto : decimal
+  Tipo : string
+  Fecha : date
+  Estado : string
+}
+
+entity "BankEmployee" as BEmp {
+  *ID : int
+  --
+  Nombre : string
+  Rol : string
+  Fecha_Ingreso : date
+}
+
+BE ||--o{ BA
+C ||--o{ BA
+BA ||--o{ T
+BE ||--o{ BEmp
+T }o--o{ T : "Transferencia"
+@enduml

@@ -1,0 +1,72 @@
+@startuml
+
+package "Controllers" {
+  class BankAccountController {
+    - BankAccountService service
+    + getAllAccounts()
+    + getAccountById(id)
+    + createAccount(accountDTO)
+    + updateAccount(id, accountDTO)
+    + deleteAccount(id)
+  }
+
+  class BankEmployeeController {
+    - BankEmployeeService service
+    + getAllEmployees()
+    + getEmployeeById(id)
+    + createEmployee(employeeDTO)
+    + updateEmployee(id, employeeDTO)
+    + deleteEmployee(id)
+  }
+
+  class BankEntityController {
+    - BankEntityService service
+    + getAllBanks()
+    + getBankById(id)
+    + createBank(bankDTO)
+    + updateBank(id, bankDTO)
+    + deleteBank(id)
+  }
+
+  class CustomerController {
+    - CustomerService service
+    + getAllCustomers()
+    + getCustomerById(id)
+    + createCustomer(customerDTO)
+    + updateCustomer(id, customerDTO)
+    + deleteCustomer(id)
+  }
+
+  class InternalTransactionController {
+    - TransactionService service
+    - RestTemplate restTemplate
+    + getInternalTransactionDirectly(id)
+    + getInternalTransactionViaHttp(id)
+  }
+
+  class TransactionController {
+    - TransactionService service
+    + getAllTransactions()
+    + getTransactionById(id)
+    + createTransaction(transactionDTO)
+    + updateTransaction(id, transactionDTO)
+    + deleteTransaction(id)
+  }
+}
+
+package "Services" {
+  class BankAccountService
+  class BankEmployeeService
+  class BankEntityService
+  class CustomerService
+  class TransactionService
+}
+
+BankAccountController --> BankAccountService
+BankEmployeeController --> BankEmployeeService
+BankEntityController --> BankEntityService
+CustomerController --> CustomerService
+InternalTransactionController --> TransactionService
+TransactionController --> TransactionService
+
+@enduml

@@ -1,0 +1,66 @@
+@startuml
+' Definición de clases con atributos y relaciones
+class BankEntity {
+  +Long id
+  +String nombre
+  +String codigoSwift
+  +String pais
+  +String fechaCreacion
+  +String estado
+  --
+  +List<BankAccount> cuentas
+  +List<BankEmployee> empleados
+}
+
+class BankAccount {
+  +Long id
+  +String numeroCuenta
+  +String tipoCuenta
+  +Double saldo
+  +String moneda
+  +String estado
+  --
+  +BankEntity bankEntity
+  +Customer customer
+  +List<Transaction> transaccionesOrigen
+  +List<Transaction> transaccionesDestino
+}
+
+class Customer {
+  +Long id
+  +String nombreCompleto
+  +String identificacion
+  +String direccion
+  +String telefono
+  +String correo
+  --
+  +List<BankAccount> cuentas
+}
+
+class Transaction {
+  +Long id
+  +Double monto
+  +String tipo
+  +LocalDateTime fechaTransaccion
+  +String estado
+  --
+  +BankAccount cuentaOrigen
+  +BankAccount cuentaDestino
+}
+
+class BankEmployee {
+  +Long id
+  +String nombre
+  +String rol
+  +String fechaIngreso
+  --
+  +BankEntity bankEntity
+}
+
+' Relaciones entre clases
+BankEntity "1" -- "0..*" BankAccount : "gestiona"
+Customer "1" -- "0..*" BankAccount : "posee"
+BankAccount "1" -- "0..*" Transaction : "realiza"
+BankEntity "1" -- "0..*" BankEmployee : "emplea"
+Transaction "0..1" -- "0..1" Transaction : "transferencia"
+@enduml
