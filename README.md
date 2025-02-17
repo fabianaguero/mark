@@ -43,7 +43,7 @@ Para más detalles, consulta la [Documentación](./doc/README.md).
 
 1. Clona el repositorio:
    ```bash
-   git clone ttps://github.com/fabianaguero/mark.git 
+   git clone https://github.com/fabianaguero/mark.git 
    cd mark
    ```
 
