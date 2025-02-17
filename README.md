@@ -43,8 +43,8 @@ Para más detalles, consulta la [Documentación](./doc/README.md).
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/tu-repositorio.git
-   cd tu-repositorio
+   git clone ttps://github.com/fabianaguero/mark.git 
+   cd mark
    ```
 
 2. Construye el proyecto usando Maven:
